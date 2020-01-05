@@ -1,0 +1,38 @@
+{
+  "default_locale": "en",
+  "name": "MyChute",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "description": "This extension optimizes bitchute",
+  "icons": {
+    "19": "icons/icon19.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_action": {
+    "default_title": "MyChute",
+    "default_icon": "icons/icon48.png",
+    "default_popup": "src/browser_action/popup.html"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "*://*.bitchute.com/*"
+  ],
+  "web_accessible_resources": [
+    "src/content_scripts/*",
+    "src/browser_action/*"
+  ],
+  "content_scripts": [
+    {
+      "exclude_globs":["*.js","*.css"],
+      "matches": ["*://*.bitchute.com/*"],
+      "css": ["src/content_scripts/content.css"]
+    },
+    {
+      "exclude_globs":["*.js","*.css"],
+      "matches": ["*://*.bitchute.com/*"],
+      "js": ["src/content_scripts/content.js"]
+    }
+  ]
+}
